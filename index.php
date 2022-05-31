@@ -1,4 +1,5 @@
-<?php 
+<?php
+  ini_set('display_errors', 1);
   include 'config/lib.php';
   $pages = include 'config/pages.php';
   var_dump($pages);
@@ -10,8 +11,8 @@
     <head>
         <meta charset="utf-8">
     </head>
-    <body>
-        <header></header>
+    <body style="background-color: #ffffff; font-color: #000000; margin: 0; padding: 0">
+        <header></header> 
         <main>
         <?php
             echo "hi";
