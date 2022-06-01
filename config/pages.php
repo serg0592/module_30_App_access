@@ -1,7 +1,9 @@
 <?php
     return array(
-        '1' => 'home.php',
-        '2' => 'users.php',
-        '3' => 'user.php',
+        '1' => 'main.php',
+        '2' => 'about.php',
+        '3' => 'contacts.php',
+        '4' => 'gratitude.php',
+        '5' => 'error.php',
     );
 ?>

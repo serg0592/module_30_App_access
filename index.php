@@ -4,32 +4,18 @@
   $pages = include 'config/pages.php';
   var_dump($pages);
   $page = getPage($pages);
-  //$page = (int)$_GET['page']; 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
     </head>
-    <body style="background-color: #ffffff; font-color: #000000; margin: 0; padding: 0">
+    <body style="background-color: #ffffff; color: #000000; margin: 0; padding: 10">
         <header></header> 
         <main>
         <?php
-            echo "hi";
             var_dump($_GET);
         ?>
-        <form method="POST">
-          <p>Ваш логин: 
-            <input type="text" name="login" />
-          </p>
-          <p>Ваш пароль: 
-            <input type="text" name="password" />
-          </p>
-          <input type="checkbox" name="test[]" value="1">
-          <input type="checkbox" name="test[]" value="2">
-          <input type="checkbox" name="test[]" value="3">
-          <input type="submit"  value="отправить">
-        </form>
         <ul>
           <li>
             <a href="?page=1">Главная</a>
@@ -46,5 +32,9 @@
         <?php
           include 'pages/' . $page;
         ?>
+        <form method="POST" name="feedback" action="http://localhost/?page=5">
+            Отзыв<input type="text" name="feedback">
+            <input type="submit" value="Отправить">
+        </form>
     </body>
 </html>
