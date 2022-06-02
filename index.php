@@ -21,20 +21,22 @@
             <a href="?page=1">Главная</a>
           </li>
           <li>
-            <a href="?page=2">Пользователи</a>
+            <a href="?page=2">О себе</a>
           </li>
           <li>
-            <a href="?page=3">Пользователь</a>
+            <a href="?page=3">Контакты</a>
           </li>
         </ul>
         </main>
         <footer></footer>
+        <form method="POST">
+          Отзыв<br>
+          <input type="text" name="feedback">
+          <input type="submit" value="Отправить">
+        </form>
+        
         <?php
           include 'pages/' . $page;
-        ?>
-        <form method="POST" name="feedback" action="http://localhost/?page=5">
-            Отзыв<input type="text" name="feedback">
-            <input type="submit" value="Отправить">
-        </form>
+        ?>          
     </body>
 </html>
