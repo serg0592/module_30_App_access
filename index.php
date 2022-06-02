@@ -1,6 +1,7 @@
 <?php
   ini_set('display_errors', 1);
   include 'config/lib.php';
+  //include 'pages/check_feedback.php';
   $pages = include 'config/pages.php';
   var_dump($pages);
   $page = getPage($pages);
@@ -29,10 +30,10 @@
         </ul>
         </main>
         <footer></footer>
-        <form method="POST">
+        <form method="POST" action="pages/check_feedback.php">
           Отзыв<br>
-          <input type="text" name="feedback">
-          <input type="submit" value="Отправить">
+          <input type="text" name="feedback"/>
+          <input type="submit" value="Отправить"/>
         </form>
         
         <?php
