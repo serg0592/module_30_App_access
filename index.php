@@ -1,12 +1,19 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['counter'])) {
-        $_SESSION['counter'] = 1;
-    } else {
-        $_SESSION['counter'] = $_SESSION['counter'] + 1;
-    }
-    echo "Вы обновили страницу " . $_SESSION['counter'] . " раз";
+    error_reporting(E_ALL);
+    ini_set('display_errors', 'on');
 
-    setcookie('test', 'Test!');
-    echo $_COOKIE['test'];
+    $host = 'localhost';
+    $user = 'root';
+    $password = '';
+    $db_name = 'test';
+
+    $link = mysqli_connect($host, $user, $password, $db_name) or die(mysqli_error($link));
+
+    mysqli_query($link, "SET NAMES 'utf8'");
+
+    $query = mysqli_query($link, "SELECT * FROM workers where id > 0") or die(mysqli_error($link));
+
+    for ($data = []; $row = mysqli_fetch_assoc($query); $data[] = $row);
+
+    var_dump($data);
 ?>
