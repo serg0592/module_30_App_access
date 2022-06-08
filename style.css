@@ -1,0 +1,8 @@
+.table-head {
+    display: inline-block;
+    list-style-type: none;
+}
+li {
+    display: inline-block;
+    width: 150px;
+}
