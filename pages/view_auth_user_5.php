@@ -4,7 +4,9 @@
 
     $log = $_SESSION['login'];
     $pas = $_SESSION['password'];
-    $auth_user = $_SESSION['auth_user'];
+    if (isset($_SESSION['auth_user'])) {
+        $auth_user = $_SESSION['auth_user'];
+    }
 ?>
 
 <!DOCTYPE html>
