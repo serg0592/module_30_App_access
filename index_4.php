@@ -3,7 +3,6 @@
     ini_set('display_errors', 'on');
 
     session_start();
-    //session_destroy();
 
     if (isset($_POST['submit'])) {
         if (!empty($_POST['login']) && !empty($_POST['password'])) {
@@ -12,24 +11,21 @@
 
             $log = $_SESSION['login'];
             $pas = $_SESSION['password'];
+            $check_log = [];
+            $check_log_pas = [];
 
             $host = 'localhost';
             $user = 'root';
             $password = '';
             $db_name = '30.4_practice';
 
-            $mysql_db = new PDO("mysql:host=$host;dbname=$db_name", $user, $password);
-            $query_log = "SELECT * FROM users WHERE user_login = '$log'";
-            $result_query_log = $mysql_db->query($query_log);
-            $result_log = $result_query_log->FETCH(PDO::FETCH_ASSOC);
+            $link = mysqli_connect($host, $user, $password, $db_name) or die(mysqli_error($link));
+            mysqli_query($link, "SET NAMES 'utf8'");    
+            $query_log = mysqli_query($link, "SELECT * FROM users WHERE user_login = '$log'");
 
-            if (!empty($result_log['user_login'])) {
-                $query_pas = "SELECT * FROM users WHERE user_login = '$log' AND user_password = '$pas'";
-                $result_query_pas = $mysql_db->query($query_pas);
-                $result_pas = $result_query_pas->FETCH(PDO::FETCH_ASSOC);
-
-                if (!empty($result_pas['user_password'])) {
-                    $_SESSION['auth_user'] = $result_pas;
+            if (!empty($check_log[] = mysqli_fetch_assoc($query_log))) {
+                $query_pas = mysqli_query($link, "SELECT * FROM users WHERE user_login = '$log' AND user_password = '$pas'");
+                if (!empty($check_log_pas[] = mysqli_fetch_assoc($query_pas))) {
                     echo 'авторизован';
                 } else {
                     echo 'неверный пароль';
@@ -39,8 +35,6 @@
             }
             
         } else {
-            $_SESSION['login'] = '';
-            $_SESSION['password'] = '';
             echo 'введите логин и пароль';
         }
     }
